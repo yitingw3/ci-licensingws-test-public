@@ -12,6 +12,7 @@ jobs:
       - checkout
       - matlab/install
       - matlab/run-tests:
+          source-folder: tests
           test-results-junit: test-results/matlab/results.xml
       - store_test_results:
           path: test-results
