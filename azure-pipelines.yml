@@ -2,8 +2,6 @@ parameters:
    - name: endpoint
      type: string
      default: ""
-variables:
-   mathworks.licensing.endpoint: ${{ parameters.endpoint }}
 pool:
    vmImage: 'Ubuntu 16.04'
 steps:
@@ -12,3 +10,5 @@ steps:
      inputs: 
        sourceFolder: tests
        testResultsJUnit: test-results/results.xml
+     env:
+       MATHWORKS_LICENSING_ENDPOINT: ${{ parameters.endpoint }}
