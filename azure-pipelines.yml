@@ -1,3 +1,9 @@
+parameters:
+   - name: endpoint
+     type: string
+     default: ""
+variables:
+   MATHWORKS_LICENSING_ENDPOINT: ${{ parameters.endpoint }}
 pool:
    vmImage: 'Ubuntu 16.04'
 steps:
