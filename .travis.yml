@@ -1,11 +1,3 @@
-language: minimal
-env: INSTALL_URL=https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/install.sh FLAGS=-v
-install:
-  - wget -qO- --retry-connrefused "$INSTALL_URL"
-  - sudo -E bash -c 'echo $PATH' && wget -qO- --retry-connrefused "$INSTALL_URL" | sudo -E bash -xs -- $FLAGS
+language: matlab
 script:
   - matlab -batch "r=runtests('tests'); assert(all(~[r.Failed]))"
-after_failure:
-  - tar -czvf log.tar.gz log.txt || true
-  - curl -sL https://raw.githubusercontent.com/travis-ci/artifacts/master/install | bash
-  - artifacts upload log.tar.gz
