@@ -6,7 +6,10 @@ on:
   pull_request:
     branches: [ master ]
   workflow_dispatch:
-
+      inputs:
+        salt:
+          default:
+          required: true
 jobs:
   test:
     runs-on: ubuntu-latest
