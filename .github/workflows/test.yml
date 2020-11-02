@@ -21,5 +21,5 @@ jobs:
       - name: Run a one-line script
         run: echo $MATHWORKS_LICENSING_ENDPOINT
         env: 
-          MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.endpoint }}
+          MATHWORKS_LICENSING_ENDPOINT: ${{ github.event }}
  
