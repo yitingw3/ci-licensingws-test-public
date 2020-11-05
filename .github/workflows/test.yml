@@ -9,7 +9,6 @@ on:
       inputs:
         endpoint:
           default:
-          required: true
 jobs:
   test:
     runs-on: ubuntu-latest
