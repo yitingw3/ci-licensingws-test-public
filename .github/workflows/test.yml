@@ -11,14 +11,18 @@ on:
           default:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Run a one-line script
-        run: echo $MATHWORKS_LICENSING_ENDPOINT
+      
+      - name: Set up MATLAB
+        run: wget -qO- --retry-connrefused "https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/ci-install.sh" | sudo -E bash
         env: 
           MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
+
+      - name: Run tests
+        run: matlab -batch "assertSuccess(runtests('tests'))"
+        
  
