@@ -17,12 +17,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Set up MATLAB
-        run: wget -qO- --retry-connrefused "https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/ci-install.sh" | sudo -E bash
+      #- name: Set up MATLAB
+      #  run: wget -qO- --retry-connrefused "https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/ci-install.sh" | sudo -E bash
+      #  env: 
+      #    MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
+
+      #- name: Run tests
+      #  run: matlab -batch "assertSuccess(runtests('tests'))"
+      - name: Display endpoint
+        run: echo $MATHWORKS_LICENSING_ENDPOINT
         env: 
           MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
 
-      - name: Run tests
-        run: matlab -batch "assertSuccess(runtests('tests'))"
         
  
