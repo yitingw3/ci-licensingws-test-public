@@ -12,22 +12,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-18.04
-
+    env: 
+      MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      #- name: Set up MATLAB
-      #  run: wget -qO- --retry-connrefused "https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/ci-install.sh" | sudo -E bash
-      #  env: 
-      #    MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
-
-      #- name: Run tests
-      #  run: matlab -batch "assertSuccess(runtests('tests'))"
-      - name: Display endpoint
+      - name: Display endpoint for debugging
         run: echo $MATHWORKS_LICENSING_ENDPOINT
-        env: 
-          MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
+      
+      - name: Set up MATLAB
+        run: wget -qO- --retry-connrefused "https://ssd.mathworks.com/supportfiles/ci/ephemeral-matlab/v0/ci-install.sh" | sudo -E bash
 
-        
- 
+      - name: Run tests
+        run: matlab -batch "assertSuccess(runtests('tests'))"      
