@@ -3,7 +3,7 @@ parameters:
      type: string
      default: ""
 pool:
-   vmImage: 'Ubuntu 16.04'
+   vmImage: 'ubuntu-latest'
 steps:
    - task: InstallMATLAB@0
    - task: RunMATLABTests@0
