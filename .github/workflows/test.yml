@@ -11,7 +11,7 @@ on:
           default:
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env: 
       MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
     steps:
