@@ -18,8 +18,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       
-      - name: Display endpoint for debugging
-        uses: echo $MATHWORKS_LICENSING_ENDPOINT
+      # - name: Display endpoint for debugging
+      #   uses: echo $MATHWORKS_LICENSING_ENDPOINT
       
       # - name: Set up MATLAB
       #   uses: matlab-actions/setup-matlab@v2
