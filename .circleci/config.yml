@@ -6,12 +6,12 @@ parameters:
     type: string
     default: ""
 orbs:
-  matlab: mathworks/matlab@0.1.1
+  matlab: mathworks/matlab@1
 # Orchestrate or schedule a set of jobs
 jobs:
   build:
     machine:
-      image: 'ubuntu-2004:202010-01'
+      image: 'ubuntu-2204:current'
     environment:
       MATHWORKS_LICENSING_ENDPOINT: << pipeline.parameters.endpoint >>
     steps:
