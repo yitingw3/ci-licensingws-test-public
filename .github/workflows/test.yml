@@ -24,9 +24,9 @@ jobs:
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
 
-      - name: Run commands
-        uses: matlab-actions/run-command@v2
-        with:
-          command: pwd
+      # - name: Run commands
+      #   uses: matlab-actions/run-command@v2
+      #   with:
+      #     command: pwd
 
           
