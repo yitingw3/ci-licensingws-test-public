@@ -12,6 +12,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [v1,v2]
+
     env: 
       MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
     steps:
@@ -22,10 +26,10 @@ jobs:
         run: echo $MATHWORKS_LICENSING_ENDPOINT
       
       - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v2
+        uses: matlab-actions/setup-matlab@${{ matrix.version }}
 
       - name: Run commands
-        uses: matlab-actions/run-command@v2
+        uses: matlab-actions/run-command@${{ matrix.version }}
         with:
           command: pwd
 
