@@ -14,8 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [v1,v2]
-
+        version: ['v1', 'v2']
     env: 
       MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
     steps:
