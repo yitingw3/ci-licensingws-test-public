@@ -29,7 +29,7 @@ jobs:
           path: test-results
 
   # Test for mathworks/matlab@0
-  test-v2:
+  test-v0:
     machine:
       image: 'ubuntu-2204:current'
     environment:

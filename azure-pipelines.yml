@@ -10,9 +10,9 @@ jobs:
   steps:
   - task: InstallMATLAB@1
   - task: RunMATLABTests@1
-  inputs: 
-    sourceFolder: tests
-    testResultsJUnit: test-results/results.xml
+    inputs: 
+      sourceFolder: tests
+      testResultsJUnit: test-results/results.xml
 
 - job: test-v0
   pool:
@@ -20,7 +20,7 @@ jobs:
   steps:
   - task: InstallMATLAB@0
   - task: RunMATLABTests@0
-  inputs: 
-    sourceFolder: tests
-    testResultsJUnit: test-results/results.xml
+    inputs: 
+      sourceFolder: tests
+      testResultsJUnit: test-results/results.xml
     
