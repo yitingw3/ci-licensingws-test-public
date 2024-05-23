@@ -4,7 +4,7 @@ parameters:
   default: ""
 
 jobs:
-- job: test-v1
+- job: test_v1
   pool:
     vmImage: 'ubuntu-latest'
   steps:
@@ -14,7 +14,7 @@ jobs:
       sourceFolder: tests
       testResultsJUnit: test-results/results.xml
 
-- job: test-v0
+- job: test_v0
   pool:
     vmImage: 'ubuntu-latest'
   steps:
