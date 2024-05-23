@@ -1,12 +1,26 @@
 parameters:
-   - name: mathworks.licensing.endpoint
-     type: string
-     default: ""
-pool:
-   vmImage: 'ubuntu-latest'
-steps:
-   - task: InstallMATLAB@1
-   - task: RunMATLABTests@1
-     inputs: 
-       sourceFolder: tests
-       testResultsJUnit: test-results/results.xml    
+- name: mathworks.licensing.endpoint
+  type: string
+  default: ""
+
+jobs:
+- job: test_v1
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: InstallMATLAB@1
+  - task: RunMATLABTests@1
+    inputs: 
+      sourceFolder: tests
+      testResultsJUnit: test-results/results.xml
+
+- job: test_v0
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - task: InstallMATLAB@0
+  - task: RunMATLABTests@0
+    inputs: 
+      sourceFolder: tests
+      testResultsJUnit: test-results/results.xml
+    
