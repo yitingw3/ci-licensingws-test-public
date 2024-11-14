@@ -9,9 +9,15 @@ on:
       inputs:
         endpoint:
           default:
+        job_to_run:
+          description: 'Specify which job to run'
+          required: true
+          default:
 jobs:
   # Build with setup-matlab v2
   test-v2:
+    # Run this job when job_to_run == 'test-v2'
+    if: ${{ github.event.inputs.job_to_run == 'test-v2' }}
     runs-on: ubuntu-latest
     env: 
       MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
@@ -32,6 +38,7 @@ jobs:
 
   test-v1:
     # Build with setup-matlab v1
+    if: ${{ github.event.inputs.job_to_run == 'test-v1' }}
     runs-on: ubuntu-latest
     env: 
       MATHWORKS_LICENSING_ENDPOINT: ${{ github.event.inputs.endpoint }}
