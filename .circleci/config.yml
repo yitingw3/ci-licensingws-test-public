@@ -1,9 +1,16 @@
+# Test for CI Licensing Web Service in a private repository
+# Also system tests for run-matlab-command binary
+
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
 # Use a package of configuration called an orb.
 parameters:
   endpoint:
+    type: string
+    default: ""
+  run_job:
+    # Parameter to specify which job to run
     type: string
     default: ""
 
@@ -44,8 +51,15 @@ jobs:
           path: test-results
 
 workflows:
-  version: 2
-  test_all_versions:
+  test_matlab_v1:
+    when:
+      and:
+        - equal: ["test-v1", << pipeline.parameters.run_job >>]
     jobs:
       - test-v1
+  test_matlab_v0:
+    when:
+      and:
+        - equal: ["test-v0", << pipeline.parameters.run_job >>]
+    jobs:
       - test-v0

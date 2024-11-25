@@ -2,11 +2,25 @@ parameters:
 - name: mathworks.licensing.endpoint
   type: string
   default: ""
+- name: job_to_run
+  type: string
+  values:
+  - test_v1
+  - test_v0
 
 jobs:
 - job: test_v1
+  condition: eq('${{ parameters.job_to_run }}', 'test_v1')
+  strategy:
+    matrix:
+      linux:
+        imageName: 'ubuntu-latest'
+      mac:
+        imageName: 'macOS-latest'
+      windows:
+        imageName: 'windows-latest'
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: $(imageName)
   steps:
   - task: InstallMATLAB@1
   - task: RunMATLABTests@1
@@ -15,8 +29,17 @@ jobs:
       testResultsJUnit: test-results/results.xml
 
 - job: test_v0
+  condition: eq('${{ parameters.job_to_run }}', 'test_v0')
+  strategy:
+    matrix:
+      linux:
+        imageName: 'ubuntu-latest'
+      mac:
+        imageName: 'macOS-latest'
+      windows:
+        imageName: 'windows-latest'
   pool:
-    vmImage: 'ubuntu-latest'
+    vmImage: $(imageName)
   steps:
   - task: InstallMATLAB@0
   - task: RunMATLABTests@0
